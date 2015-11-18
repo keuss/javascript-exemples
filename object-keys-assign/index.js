@@ -5,3 +5,14 @@ o.desc;
 
 var copie = Object.assign({}, o, {desc: "des fruits"});
 console.log(JSON.stringify(copie));
+
+
+var orange = {
+    name : 'orange of course !',
+    alertCustom : function (param) {
+        alert(param + ' '+ this.name); 
+    }
+};
+
+console.log(orange.alertCustom('Alert for'));
+orange['name'] == orange.name
