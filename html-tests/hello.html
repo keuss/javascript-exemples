@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>Hello world</title>
+    </head>
+    <body>
+		
+		<p>TEST PERSO JS 2015.</p>
+		<p id="demo"></p>
+		
+        <script>
+			// ####################### function	 
+			console.info('#######################function');
+			var add = function (a, b) {
+				return a + b;
+			};
+			console.log('add='+add); 
+			var x = add(1, 2); // x = 3
+			console.log('x='+x);
+			//console.log('x='+x()); // Uncaught TypeError: x is not a function(anonymous function)
+			var anotherAdd = add; // same function, with a different name
+			var y = anotherAdd(5, 6); // y =11
+			console.log('y='+y);
+			
+			// function with function argument
+			function test(param, callback) {
+				// Make sure the callback is a function?
+				if (typeof callback === "function") {
+					// Call it, since we have confirmed it is callable?
+					callback(param);
+				}
+			}
+			function printer (name) {
+				console.log('hello world ' + name);
+			};
+			test('keuss', printer);
+			
+			// Fonctions anonymes
+			test('keuss',
+			  function(param) {
+				console.log('hello world anonymes ' + param);
+			  }
+			);
+			// http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
+			var friends = ["Mike", "Stacy", "Andy", "Rick"];
+			friends.forEach(function (eachName, index){
+				console.log(index + 1 + ". " + eachName); // 1. Mike, 2. Stacy, 3. Andy, 4. Rick
+			});
+			// #######################
+			
+			// ####################### object
+			console.info('#######################object');
+			var person = {
+				firstName: "John",
+				lastName : "Doe",
+				id       : 5566,
+				fullName : function() {
+				   return this.firstName + " " + this.lastName;
+				}
+			};
+			document.getElementById("demo").innerHTML = person.fullName();
+			// #######################
+			
+			// ####################### Function Scope
+			console.info('#######################Function Scope');
+			var a = 1;
+			var b = 2;
+			var c;
+			console.info("a=" + a + ", b=" + b+", c="+c); // prints "a=1, b=2, c=undefined"
+			function foo() {
+				var a = 3;
+				var c = 4;
+				console.info("a=" + a + ", b=" + b + ", c=" + c); // prints "a=3, b=undefined, c=4"
+				function bar() {
+					var a = 5;
+					c = 6;
+					console.info("a=" + a + ", b=" + b + ", c=" + c); // prints "a=5, b=7, c=6"
+				}
+				var b = 7;
+				bar();
+				console.info("a=" + a + ", b=" + b + ", c=" + c); // prints "a=3, b=7, c=6"
+			}
+			foo();
+			console.info("a=" + a + ", b=" + b + ", c=" + c); // prints "a=1, b=2, c=undefined
+			// #######################
+			
+			// ####################### Closures
+			console.info('#######################Closures');
+			function foo(x) {
+				var a = x;
+				return function () {
+					a = a + 5;
+					return a;
+				}
+			}
+			var bar1 = foo(10);
+			console.info("a=" + bar1);
+			console.info("a=" + bar1()); // prints "a=15"
+			var bar2 = foo(100);
+			console.info("a=" + bar2()); // prints "a=105"
+			
+			console.info("a=" + bar1()); // prints "a=20"
+			console.info("a=" + bar2()); // prints "a=110
+			
+			console.info("a=" + bar1()); // prints "a=25"
+			console.info("a=" + bar2()); // prints "a=115
+			// #######################
+		</script>
+    </body>
+</html>
