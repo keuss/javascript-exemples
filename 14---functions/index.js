@@ -40,3 +40,21 @@ var route = (url) => {
 }
 // google.fr/yo
 console.log(route('google.fr')('yo'))
+
+
+// ---------------------------------
+http://www.sitepoint.com/call-javascript-function-string-without-using-eval/
+http://stackoverflow.com/questions/359788/how-to-execute-a-javascript-function-when-i-have-its-name-as-a-string
+
+// function name and parameters to pass
+function runMe(p1, p2) {
+  console.log(`runMe with p1:${p1} and p2:${p2}`);
+}
+var fnstring = "runMe";
+var fnparams = [1, 2, 3];
+
+// find object
+var fn = window[fnstring];
+
+// is object a function?
+if (typeof fn === "function") fn.apply(window, ['yo', 'keuss']);
