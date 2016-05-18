@@ -18,3 +18,10 @@ c.quantite = 10;
 console.log(c);
 console.log(inventaire)
 // ------------------------------------
+
+var tab = ['yo', 'ya', undefined, "", "4", 5]
+console.log(tab.join(' - '))
+console.log(tab.filter(n => n && n.length > 0).join(' - '))
+// yo - ya -  -  - 4 - 5
+// yo - ya - 4
+// ------------------------------------
