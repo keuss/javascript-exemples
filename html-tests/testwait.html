@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Hello WAIT</title>
+    </head>
+    <body>
+		
+		<p>TEST JS WAIT</p>
+
+		<div id=a></div>
+		<script>
+		  // Example from : https://hackernoon.com/lets-make-a-javascript-wait-function-fa3a2eb88f11
+		  var e = document.getElementById('a');
+		  
+		  // var wait = ms => new Promise((r, j)=>setTimeout(r, ms));
+		  // (async () => { await wait(2000); console.warn('done') })();
+		  
+		  var waitForHello = timeoutms => new Promise( (r, j) => {
+			var check = () => {
+			  console.warn('checking');
+			  if(e.innerHTML == 'Hello world') 
+				r();
+			  // timeoutms -= 100 <=> timeoutms = timeoutms - 100
+			  else if((timeoutms -= 100) < 0)
+				j('timed out!');
+			  else
+				setTimeout(check, 100);
+			};
+			setTimeout(check, 100);
+		  });
+		  
+		  //setTimeout(() => { e.innerHTML = 'Hello world'; }, 2000);
+		  
+		  (async () => {
+			a.innerHTML = 'waiting..';
+			waitForHello(4000);
+		  })();
+		  
+		</script>
+
+	</body>
+</html>
