@@ -7,6 +7,14 @@ for (var i=0; i<pets.length; i++) {
 console.log(pets);
 
 // FLATMAP
+var arr1 = [1, 2, 3, 4];
+arr1.map(x => [x, x * 2]); 
+// [[1, 2], [2, 4], [3, 6], [4, 8]]
+
+arr1.flatMap(x => [x, x * 2]); 
+// [1, 2, 2, 4, 3, 6, 4, 8]
+
+// OTHER FLATMAP
 var data = [{
 		"id": 1,
 		"url": "jdbc:h2:mem:testdb",
