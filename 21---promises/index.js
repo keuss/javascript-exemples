@@ -36,3 +36,33 @@ console.log('trying to get user detail ...');
 getUserDetail('keuss').then(function (json) {
 	console.log('json', json);
 });
+
+
+// --------------------------
+
+function faireQqc() {
+  return new Promise((successCallback, failureCallback) => {
+    // exécuté de suite (cf. doc MDN)
+    console.log("C'est fait");
+    // réussir une fois sur deux
+    if (Math.random() > .5) {
+      successCallback("Réussite");
+    } else {
+      failureCallback("Échec");
+    }
+  })
+}
+
+const promise = faireQqc();
+
+promise.then((value) => {
+  	console.log(value);
+}).catch((err) => {
+  	console.log(err);
+});
+
+console.log(promise);
+
+// > "C'est fait"
+// > [object Promise]
+// > "Échec" ou "Réussite"
